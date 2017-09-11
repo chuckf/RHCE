@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#####
+# Configure a master DNS server to create A records for test systems.
+# Avoids having to mange all the /etc/hosts files 
+#####
+
+# Edit /etc/named.conf to allow forwarding
+
+sed -i '/\trecursion yes;/a \
+\tforward only; \
+\tforwarders {192.168.12.1; };' /etc/named.conf
+[root@dns ~]# vi /etc/named.conf
