@@ -1,3 +1,9 @@
+#!/bin/bash
+
+#####
+# Configuration for a cache-only DNS server. Required for RHCE.
+#####
+
 # Install BIND package
 yum install -y bind
 
