@@ -1,1 +1,41 @@
 NTP - Network Time Protocol
+
+NTP is used to synchronize system time across a network to provide accuracy for applications such as monitoring software, logging, and Splunk.
+
+
+Time Source:  
+A time source is any device that acts as a provider of time to other devices. There are numerous sources that devices can pull time information from.
+
+Atomic Clock - the most accurate source of time due to the radio waves it sends to its connected radio clocks
+
+Radio Clock - Receives time data from an atomic clock and can route to other servers.
+
+Internet-Based Public Timeserver - organizations like NIST have synced up directly to Radio Clocks and allow anyone to synchronize with it
+
+Local System Clock - This is the least recommended practice. Manually assigning the time of an NTP server and then having clients connect to it can go terribly wrong.
+
+NTP Roles:  
+Primary NTP Server - Receives time from one of the sources above and provides time to clients and/or secondary servers
+
+Secondary NTP Server - Receives time from a primary NTP server and assists in the load of the primary NTP server
+
+NTP Peer - Receives AND provides NTP time to and NTP server. All peers work at the same stratum level and a re considered equal.
+
+NTP Client - Receives time from either a primary or secondary NTP server
+
+Administrating NTP:  
+1. yum install ntp -y  
+2. Edit the ntp.conf file to reflect the following:  
+server time-a.nist.gov iburst  
+server time-b.nist.gov iburst  
+server time-c.nist.gov iburst  
+server time-d.nist.gov iburst  
+
+broadcast 192.168.12.255 autokey  
+
+3. Allow NTP through the firewall  
+firewall-cmd --add-service=ntp && firewall-cmd --add-service=ntp --permanent  
+4. Enable the ntpd daemon to start on boot  
+systemctl enable ntpd  
+5. Start the ntpd daemon  
+systemctl start ntpd
