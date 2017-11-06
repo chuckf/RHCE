@@ -30,7 +30,7 @@ PTR - Pointer Record
 SOA - Start of Authority
 
 
-Installation:
+Installation:  
 Remember - the required.sh script can be used to automate all of this and create a caching only name server.
 
 1. yum install bind
