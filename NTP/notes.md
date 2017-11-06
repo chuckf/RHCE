@@ -30,7 +30,6 @@ server time-a.nist.gov iburst
 server time-b.nist.gov iburst  
 server time-c.nist.gov iburst  
 server time-d.nist.gov iburst  
-
 broadcast 192.168.12.255 autokey  
 
 3. Allow NTP through the firewall  
