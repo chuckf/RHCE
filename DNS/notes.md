@@ -2,16 +2,16 @@ DNS - Domain Name Service
 
 DNS is responsible for mapping device ip addresses to hostnames. In the case of the RHCE, we use a software called BIND to make that possible.
 
-TLD - Top Level Domain
+TLD - Top Level Domain  
 Example: .com
 
-Second-Level Domain
+Second-Level Domain  
 Example: .scottctaylor
 
-Leaf
+Leaf  
 Example: www
 
-FQDN - Fully Qualified Domain Name
+FQDN - Fully Qualified Domain Name  
 www.scottctaylor.com
 
 DNS Root Servers - There are DNS servers that handle each TLD. For BIND, this file is located in /var/named/named.ca by default.
@@ -34,12 +34,12 @@ Installation:
 Remember - the required.sh script can be used to automate all of this and create a caching only name server.
 
 1. yum install bind
-2. Edit /etc/named.conf to reflect the following
-  listen-on port 53 { any; };
-  allow-query { any; };
-  recursion yes;
-  dnssec-enable no;
-  dnssec-validaton no;
+2. Edit /etc/named.conf to reflect the following  
+  listen-on port 53 { any; };  
+  allow-query { any; };  
+  recursion yes;  
+  dnssec-enable no;  
+  dnssec-validaton no;  
 3. named-checkconf
 4. systemctl enable named
 5. systemctl start named
@@ -47,7 +47,7 @@ Remember - the required.sh script can be used to automate all of this and create
 7. firewall-cmd --add-service=dns && firewall-cmd --add-service=dns --permanent
 
 Client:
-1. Edit /etc/resolv.conf to point to the server by adding a line stating
+1. Edit /etc/resolv.conf to point to the server by adding a line stating  
   nameserver (ip address)
-2. Test dns names by typing
+2. Test dns names by typing  
   dig (hostname)
