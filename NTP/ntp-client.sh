@@ -7,7 +7,7 @@
 # Verify that server argument exists
 if [ -z "$1" ]
   then
-    echo "Provided the name of the primary ntp server"
+    echo "EXITING: Provide the name of the primary ntp server"
     exit -1
 fi
 
