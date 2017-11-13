@@ -4,7 +4,7 @@
 # Configuration to forward all mail to central mail server.
 #####
 
-SMTPSERVER = $1
+SMTPSERVER=$1
 
 if [ -z "$1" ]
   then
