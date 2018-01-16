@@ -28,7 +28,6 @@ NTP Client - Receives time from either a primary or secondary NTP server
 
 . `yum install ntp -y`
 . Edit the ntp.conf file to reflect the following:
-
 ----
 server time-a.nist.gov iburst
 server time-b.nist.gov iburst
@@ -36,14 +35,10 @@ server time-c.nist.gov iburst
 server time-d.nist.gov iburst
 broadcast 192.168.12.255 autokey
 ----
-
-. Allow NTP through the firewall
-
+. Allow NTP through the firewall +
 `firewall-cmd --add-service=ntp && firewall-cmd --add-service=ntp --permanent`
 
-. Enable the ntpd daemon to start on boot
-
+. Enable the ntpd daemon to start on boot +
 `systemctl enable ntpd`
-. Start the ntpd daemon
-
+. Start the ntpd daemon +
 `systemctl start ntpd`
