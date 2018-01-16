@@ -1,7 +1,9 @@
 = NTP - Network Time Protocol
+:toc:
 
 NTP is used to synchronize system time across a network to provide accuracy for applications such as monitoring software, logging, and Splunk.
 
+toc::[]
 
 === Time Source:
 A time source is any device that acts as a provider of time to other devices. There are numerous sources that devices can pull time information from.
@@ -27,8 +29,9 @@ NTP Client - Receives time from either a primary or secondary NTP server
 === Administrating NTP:
 
 . `yum install ntp -y`
-. Edit the ntp.conf file to reflect the following:
 
+. Edit the ntp.conf file to reflect the following:
++
 ----
 server time-a.nist.gov iburst
 server time-b.nist.gov iburst
@@ -38,12 +41,13 @@ broadcast 192.168.12.255 autokey
 ----
 
 . Allow NTP through the firewall
-
++
 `firewall-cmd --add-service=ntp && firewall-cmd --add-service=ntp --permanent`
 
 . Enable the ntpd daemon to start on boot
-
++
 `systemctl enable ntpd`
-. Start the ntpd daemon
 
+. Start the ntpd daemon
++
 `systemctl start ntpd`
